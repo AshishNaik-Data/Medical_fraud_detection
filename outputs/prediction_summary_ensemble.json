@@ -1,0 +1,9 @@
+{
+  "model": "ensemble",
+  "threshold": 0.5744975744975745,
+  "n_test_providers": 1353,
+  "n_predicted_fraud": 106,
+  "predicted_fraud_rate": 0.0783,
+  "mean_probability": 0.1062,
+  "median_probability": 0.0
+}

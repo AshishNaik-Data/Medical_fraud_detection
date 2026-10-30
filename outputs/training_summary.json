@@ -1,0 +1,25 @@
+{
+  "baseline_oof_metrics": {
+    "roc_auc": 0.945188327347523,
+    "pr_auc": 0.6995163451147081,
+    "f1": 0.6660714285714285,
+    "precision": 0.6074918566775245,
+    "recall": 0.7371541501976284,
+    "accuracy": 0.9308687615526802,
+    "threshold": 0.407221257686615
+  },
+  "ensemble_oof_metrics": {
+    "roc_auc": 0.953317329082011,
+    "pr_auc": 0.7009845723055366,
+    "f1": 0.6808118081180812,
+    "precision": 0.6384083044982699,
+    "recall": 0.7292490118577075,
+    "accuracy": 0.9360443622920518,
+    "threshold": 0.5744975744975745
+  },
+  "n_features": 55,
+  "n_train_providers": 5410,
+  "fraud_rate": 0.09353049907578559,
+  "gpu_used": false,
+  "training_time_seconds": 17.2
+}

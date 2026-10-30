@@ -1,0 +1,859 @@
+2026-03-22 14:58:22 | INFO    | Building features...
+2026-03-22 14:58:24 | INFO    | Loaded train: 558,211 claims, 5,410 providers, 5,410 label rows
+2026-03-22 14:58:24 | INFO    | Loaded test: 135,392 claims, 1,353 providers, 1,353 label rows
+2026-03-22 14:58:24 | INFO    | Building tabular provider features...
+2026-03-22 14:58:27 | INFO    | Built 58 provider-level features for 5410 providers
+2026-03-22 14:58:28 | INFO    | Built 58 provider-level features for 1353 providers
+2026-03-22 14:58:28 | INFO    | Building graph features...
+2026-03-22 14:58:28 | INFO    | Computing graph features offline (no Neo4j)...
+2026-03-22 14:58:31 | INFO    |   Computing shared-beneficiary overlap for 6763 providers...
+2026-03-22 15:09:44 | INFO    | Building features...
+2026-03-22 15:09:45 | INFO    | Loaded train: 558,211 claims, 5,410 providers, 5,410 label rows
+2026-03-22 15:09:46 | INFO    | Loaded test: 135,392 claims, 1,353 providers, 1,353 label rows
+2026-03-22 15:09:46 | INFO    | Building tabular provider features...
+2026-03-22 15:09:49 | INFO    | Built 58 provider-level features for 5410 providers
+2026-03-22 15:09:49 | INFO    | Built 58 provider-level features for 1353 providers
+2026-03-22 15:09:49 | INFO    | Building graph features...
+2026-03-22 15:09:49 | INFO    | Computing graph features offline (no Neo4j)...
+2026-03-22 15:09:50 | INFO    |   Computing shared-beneficiary overlap (vectorized)...
+2026-03-22 15:09:50 | INFO    |   Computing shared-physician overlap...
+2026-03-22 15:09:51 | INFO    | Offline graph features: 12 features for 6763 providers
+2026-03-22 15:09:51 | INFO    | Final feature matrix: 70 features, 5410 train providers, 1353 test providers
+2026-03-22 15:09:51 | INFO    | Training data shape: (5410, 70)
+2026-03-22 15:09:51 | INFO    | Class distribution: [4904  506] (fraud rate: 9.35%)
+2026-03-22 15:09:51 | INFO    | ============================================================
+2026-03-22 15:09:51 | INFO    | TRAINING BASELINE MODEL (XGBoost)
+2026-03-22 15:09:51 | INFO    | ============================================================
+2026-03-22 15:09:51 | INFO    | Correlation pruning: dropped 15 features (threshold=0.95), keeping 55
+2026-03-22 15:09:51 | INFO    | XGBoost: using CPU
+2026-03-22 15:09:52 | INFO    |   XGBoost-Baseline Fold 1/5: ROC-AUC=0.9403, PR-AUC=0.6915, F1=0.6468
+2026-03-22 15:09:52 | INFO    | XGBoost: using CPU
+2026-03-22 15:09:52 | INFO    |   XGBoost-Baseline Fold 2/5: ROC-AUC=0.9410, PR-AUC=0.6499, F1=0.6280
+2026-03-22 15:09:52 | INFO    | XGBoost: using CPU
+2026-03-22 15:09:52 | INFO    |   XGBoost-Baseline Fold 3/5: ROC-AUC=0.9513, PR-AUC=0.7419, F1=0.6800
+2026-03-22 15:09:52 | INFO    | XGBoost: using CPU
+2026-03-22 15:09:53 | INFO    |   XGBoost-Baseline Fold 4/5: ROC-AUC=0.9494, PR-AUC=0.7261, F1=0.6731
+2026-03-22 15:09:53 | INFO    | XGBoost: using CPU
+2026-03-22 15:09:53 | INFO    |   XGBoost-Baseline Fold 5/5: ROC-AUC=0.9456, PR-AUC=0.7162, F1=0.6697
+2026-03-22 15:09:53 | INFO    |   At recall>=70%: threshold=0.407, precision=0.607, F1=0.666
+2026-03-22 15:09:53 | INFO    |   At recall>=80%: threshold=0.182, precision=0.541, F1=0.653
+2026-03-22 15:09:53 | INFO    |   At recall>=90%: threshold=0.048, precision=0.436, F1=0.587
+2026-03-22 15:09:53 | INFO    | 
+Top 20 Features by Importance:
+2026-03-22 15:09:53 | INFO    |   MaxDiagCodes                             0.2732
+2026-03-22 15:09:53 | INFO    |   MaxClaimDuration                         0.0947
+2026-03-22 15:09:53 | INFO    |   TotalClaims                              0.0637
+2026-03-22 15:09:53 | INFO    |   MaxReimbursed                            0.0519
+2026-03-22 15:09:53 | INFO    |   MaxSameDayClaimsPerBene                  0.0483
+2026-03-22 15:09:53 | INFO    |   MaxProcCodes                             0.0428
+2026-03-22 15:09:53 | INFO    |   UniqueDiagCodes                          0.0338
+2026-03-22 15:09:53 | INFO    |   graph_diag_concentration                 0.0221
+2026-03-22 15:09:53 | INFO    |   MeanSameDayClaimsPerBene                 0.0217
+2026-03-22 15:09:53 | INFO    |   graph_proc_concentration                 0.0216
+2026-03-22 15:09:53 | INFO    |   InpatientClaims                          0.0195
+2026-03-22 15:09:53 | INFO    |   DiagDiversityRatio                       0.0147
+2026-03-22 15:09:53 | INFO    |   ClaimsPerBeneficiary                     0.0144
+2026-03-22 15:09:53 | INFO    |   UniqueBeneficiaries                      0.0120
+2026-03-22 15:09:53 | INFO    |   StdReimbursed                            0.0115
+2026-03-22 15:09:53 | INFO    |   MeanClaimDuration                        0.0105
+2026-03-22 15:09:53 | INFO    |   graph_max_shared_benes                   0.0102
+2026-03-22 15:09:53 | INFO    |   MedianReimbursed                         0.0102
+2026-03-22 15:09:53 | INFO    |   UniqueStates                             0.0089
+2026-03-22 15:09:53 | INFO    |   ChronicCond_KidneyDisease_Rate           0.0084
+2026-03-22 15:09:53 | INFO    | ============================================================
+2026-03-22 15:09:53 | INFO    | TRAINING ENSEMBLE MODEL (XGBoost + LightGBM + CatBoost)
+2026-03-22 15:09:53 | INFO    | ============================================================
+2026-03-22 15:09:53 | INFO    | Correlation pruning: dropped 15 features (threshold=0.95), keeping 55
+2026-03-22 15:09:53 | INFO    | 
+--- XGBoost Base Learner ---
+2026-03-22 15:09:53 | INFO    | XGBoost: using CPU
+2026-03-22 15:09:54 | INFO    |   XGB Fold 1/5: ROC-AUC=0.9403, PR-AUC=0.6915, F1=0.6468
+2026-03-22 15:09:54 | INFO    | XGBoost: using CPU
+2026-03-22 15:09:54 | INFO    |   XGB Fold 2/5: ROC-AUC=0.9410, PR-AUC=0.6499, F1=0.6280
+2026-03-22 15:09:54 | INFO    | XGBoost: using CPU
+2026-03-22 15:09:55 | INFO    |   XGB Fold 3/5: ROC-AUC=0.9513, PR-AUC=0.7419, F1=0.6800
+2026-03-22 15:09:55 | INFO    | XGBoost: using CPU
+2026-03-22 15:09:55 | INFO    |   XGB Fold 4/5: ROC-AUC=0.9494, PR-AUC=0.7261, F1=0.6731
+2026-03-22 15:09:55 | INFO    | XGBoost: using CPU
+2026-03-22 15:09:56 | INFO    |   XGB Fold 5/5: ROC-AUC=0.9456, PR-AUC=0.7162, F1=0.6697
+2026-03-22 15:09:56 | WARNING | LightGBM not installed, skipping
+2026-03-22 15:09:56 | WARNING | CatBoost not installed, skipping
+2026-03-22 15:09:56 | INFO    | 
+--- Training Meta-Learner (Logistic Regression) ---
+2026-03-22 15:09:56 | INFO    | Calibrating meta-learner probabilities...
+2026-03-22 15:09:56 | INFO    |   At recall>=70%: threshold=0.527, precision=0.605, F1=0.665
+2026-03-22 15:09:56 | INFO    |   At recall>=80%: threshold=0.489, precision=0.541, F1=0.653
+2026-03-22 15:09:56 | INFO    |   At recall>=90%: threshold=0.177, precision=0.391, F1=0.548
+2026-03-22 15:09:56 | INFO    | 
+Top 20 Features by Importance:
+2026-03-22 15:09:56 | INFO    |   MaxDiagCodes                             0.2732
+2026-03-22 15:09:56 | INFO    |   MaxClaimDuration                         0.0947
+2026-03-22 15:09:56 | INFO    |   TotalClaims                              0.0637
+2026-03-22 15:09:56 | INFO    |   MaxReimbursed                            0.0519
+2026-03-22 15:09:56 | INFO    |   MaxSameDayClaimsPerBene                  0.0483
+2026-03-22 15:09:56 | INFO    |   MaxProcCodes                             0.0428
+2026-03-22 15:09:56 | INFO    |   UniqueDiagCodes                          0.0338
+2026-03-22 15:09:56 | INFO    |   graph_diag_concentration                 0.0221
+2026-03-22 15:09:56 | INFO    |   MeanSameDayClaimsPerBene                 0.0217
+2026-03-22 15:09:56 | INFO    |   graph_proc_concentration                 0.0216
+2026-03-22 15:09:56 | INFO    |   InpatientClaims                          0.0195
+2026-03-22 15:09:56 | INFO    |   DiagDiversityRatio                       0.0147
+2026-03-22 15:09:56 | INFO    |   ClaimsPerBeneficiary                     0.0144
+2026-03-22 15:09:56 | INFO    |   UniqueBeneficiaries                      0.0120
+2026-03-22 15:09:56 | INFO    |   StdReimbursed                            0.0115
+2026-03-22 15:09:56 | INFO    |   MeanClaimDuration                        0.0105
+2026-03-22 15:09:56 | INFO    |   graph_max_shared_benes                   0.0102
+2026-03-22 15:09:56 | INFO    |   MedianReimbursed                         0.0102
+2026-03-22 15:09:56 | INFO    |   UniqueStates                             0.0089
+2026-03-22 15:09:56 | INFO    |   ChronicCond_KidneyDisease_Rate           0.0084
+2026-03-22 15:09:56 | INFO    | 
+Retraining base models on full training data for inference...
+2026-03-22 15:09:56 | INFO    | XGBoost: using CPU
+2026-03-22 15:09:56 | INFO    | Saved OOF predictions to /Users/ashish/Labcode/claude/Datasciencecap/healthcare_fraud_detection/outputs/oof_predictions.csv
+2026-03-22 15:09:56 | INFO    | 
+Total training time: 12.5s
+2026-03-22 15:09:56 | INFO    | Training summary saved to /Users/ashish/Labcode/claude/Datasciencecap/healthcare_fraud_detection/outputs/training_summary.json
+2026-03-22 15:10:24 | INFO    | Building features...
+2026-03-22 15:10:25 | INFO    | Loaded train: 558,211 claims, 5,410 providers, 5,410 label rows
+2026-03-22 15:10:25 | INFO    | Loaded test: 135,392 claims, 1,353 providers, 1,353 label rows
+2026-03-22 15:10:25 | INFO    | Building tabular provider features...
+2026-03-22 15:10:28 | INFO    | Built 58 provider-level features for 5410 providers
+2026-03-22 15:10:29 | INFO    | Built 58 provider-level features for 1353 providers
+2026-03-22 15:10:29 | INFO    | Building graph features...
+2026-03-22 15:10:29 | INFO    | Computing graph features offline (no Neo4j)...
+2026-03-22 15:10:30 | INFO    |   Computing shared-beneficiary overlap (vectorized)...
+2026-03-22 15:10:30 | INFO    |   Computing shared-physician overlap...
+2026-03-22 15:10:31 | INFO    | Offline graph features: 12 features for 6763 providers
+2026-03-22 15:10:31 | INFO    | Final feature matrix: 70 features, 5410 train providers, 1353 test providers
+2026-03-22 15:10:31 | INFO    | Training data shape: (5410, 70)
+2026-03-22 15:10:31 | INFO    | Class distribution: [4904  506] (fraud rate: 9.35%)
+2026-03-22 15:10:31 | INFO    | ============================================================
+2026-03-22 15:10:31 | INFO    | TRAINING BASELINE MODEL (XGBoost)
+2026-03-22 15:10:31 | INFO    | ============================================================
+2026-03-22 15:10:31 | INFO    | Correlation pruning: dropped 15 features (threshold=0.95), keeping 55
+2026-03-22 15:10:31 | INFO    | XGBoost: using CPU
+2026-03-22 15:10:31 | INFO    |   XGBoost-Baseline Fold 1/5: ROC-AUC=0.9403, PR-AUC=0.6915, F1=0.6468
+2026-03-22 15:10:31 | INFO    | XGBoost: using CPU
+2026-03-22 15:10:32 | INFO    |   XGBoost-Baseline Fold 2/5: ROC-AUC=0.9410, PR-AUC=0.6499, F1=0.6280
+2026-03-22 15:10:32 | INFO    | XGBoost: using CPU
+2026-03-22 15:10:32 | INFO    |   XGBoost-Baseline Fold 3/5: ROC-AUC=0.9513, PR-AUC=0.7419, F1=0.6800
+2026-03-22 15:10:32 | INFO    | XGBoost: using CPU
+2026-03-22 15:10:33 | INFO    |   XGBoost-Baseline Fold 4/5: ROC-AUC=0.9494, PR-AUC=0.7261, F1=0.6731
+2026-03-22 15:10:33 | INFO    | XGBoost: using CPU
+2026-03-22 15:10:33 | INFO    |   XGBoost-Baseline Fold 5/5: ROC-AUC=0.9456, PR-AUC=0.7162, F1=0.6697
+2026-03-22 15:10:33 | INFO    |   At recall>=70%: threshold=0.407, precision=0.607, F1=0.666
+2026-03-22 15:10:33 | INFO    |   At recall>=80%: threshold=0.182, precision=0.541, F1=0.653
+2026-03-22 15:10:33 | INFO    |   At recall>=90%: threshold=0.048, precision=0.436, F1=0.587
+2026-03-22 15:10:33 | INFO    | 
+Top 20 Features by Importance:
+2026-03-22 15:10:33 | INFO    |   MaxDiagCodes                             0.2732
+2026-03-22 15:10:33 | INFO    |   MaxClaimDuration                         0.0947
+2026-03-22 15:10:33 | INFO    |   TotalClaims                              0.0637
+2026-03-22 15:10:33 | INFO    |   MaxReimbursed                            0.0519
+2026-03-22 15:10:33 | INFO    |   MaxSameDayClaimsPerBene                  0.0483
+2026-03-22 15:10:33 | INFO    |   MaxProcCodes                             0.0428
+2026-03-22 15:10:33 | INFO    |   UniqueDiagCodes                          0.0338
+2026-03-22 15:10:33 | INFO    |   graph_diag_concentration                 0.0221
+2026-03-22 15:10:33 | INFO    |   MeanSameDayClaimsPerBene                 0.0217
+2026-03-22 15:10:33 | INFO    |   graph_proc_concentration                 0.0216
+2026-03-22 15:10:33 | INFO    |   InpatientClaims                          0.0195
+2026-03-22 15:10:33 | INFO    |   DiagDiversityRatio                       0.0147
+2026-03-22 15:10:33 | INFO    |   ClaimsPerBeneficiary                     0.0144
+2026-03-22 15:10:33 | INFO    |   UniqueBeneficiaries                      0.0120
+2026-03-22 15:10:33 | INFO    |   StdReimbursed                            0.0115
+2026-03-22 15:10:33 | INFO    |   MeanClaimDuration                        0.0105
+2026-03-22 15:10:33 | INFO    |   graph_max_shared_benes                   0.0102
+2026-03-22 15:10:33 | INFO    |   MedianReimbursed                         0.0102
+2026-03-22 15:10:33 | INFO    |   UniqueStates                             0.0089
+2026-03-22 15:10:33 | INFO    |   ChronicCond_KidneyDisease_Rate           0.0084
+2026-03-22 15:10:33 | INFO    | ============================================================
+2026-03-22 15:10:33 | INFO    | TRAINING ENSEMBLE MODEL (XGBoost + LightGBM + CatBoost)
+2026-03-22 15:10:33 | INFO    | ============================================================
+2026-03-22 15:10:33 | INFO    | Correlation pruning: dropped 15 features (threshold=0.95), keeping 55
+2026-03-22 15:10:33 | INFO    | 
+--- XGBoost Base Learner ---
+2026-03-22 15:10:33 | INFO    | XGBoost: using CPU
+2026-03-22 15:10:34 | INFO    |   XGB Fold 1/5: ROC-AUC=0.9403, PR-AUC=0.6915, F1=0.6468
+2026-03-22 15:10:34 | INFO    | XGBoost: using CPU
+2026-03-22 15:10:34 | INFO    |   XGB Fold 2/5: ROC-AUC=0.9410, PR-AUC=0.6499, F1=0.6280
+2026-03-22 15:10:34 | INFO    | XGBoost: using CPU
+2026-03-22 15:10:34 | INFO    |   XGB Fold 3/5: ROC-AUC=0.9513, PR-AUC=0.7419, F1=0.6800
+2026-03-22 15:10:34 | INFO    | XGBoost: using CPU
+2026-03-22 15:10:35 | INFO    |   XGB Fold 4/5: ROC-AUC=0.9494, PR-AUC=0.7261, F1=0.6731
+2026-03-22 15:10:35 | INFO    | XGBoost: using CPU
+2026-03-22 15:10:35 | INFO    |   XGB Fold 5/5: ROC-AUC=0.9456, PR-AUC=0.7162, F1=0.6697
+2026-03-22 15:10:40 | INFO    | 
+--- LightGBM Base Learner ---
+2026-03-22 15:10:41 | INFO    |   LGB Fold 1/5: ROC-AUC=0.9422, PR-AUC=0.6184, F1=0.6190
+2026-03-22 15:10:41 | INFO    |   LGB Fold 2/5: ROC-AUC=0.9472, PR-AUC=0.7124, F1=0.6544
+2026-03-22 15:10:41 | INFO    |   LGB Fold 3/5: ROC-AUC=0.9568, PR-AUC=0.7708, F1=0.6667
+2026-03-22 15:10:41 | INFO    |   LGB Fold 4/5: ROC-AUC=0.9499, PR-AUC=0.6784, F1=0.6534
+2026-03-22 15:10:41 | INFO    |   LGB Fold 5/5: ROC-AUC=0.9420, PR-AUC=0.6562, F1=0.6777
+2026-03-22 15:10:43 | INFO    | 
+--- CatBoost Base Learner ---
+2026-03-22 15:10:43 | INFO    |   CB Fold 1/5: ROC-AUC=0.9509, PR-AUC=0.7360, F1=0.5878
+2026-03-22 15:10:44 | INFO    |   CB Fold 2/5: ROC-AUC=0.9481, PR-AUC=0.7189, F1=0.6290
+2026-03-22 15:10:44 | INFO    |   CB Fold 3/5: ROC-AUC=0.9610, PR-AUC=0.7515, F1=0.6426
+2026-03-22 15:10:44 | INFO    |   CB Fold 4/5: ROC-AUC=0.9553, PR-AUC=0.7246, F1=0.6667
+2026-03-22 15:10:45 | INFO    |   CB Fold 5/5: ROC-AUC=0.9428, PR-AUC=0.6790, F1=0.6338
+2026-03-22 15:10:45 | INFO    | 
+--- Training Meta-Learner (Logistic Regression) ---
+2026-03-22 15:10:45 | INFO    | Calibrating meta-learner probabilities...
+2026-03-22 15:10:45 | INFO    |   At recall>=70%: threshold=0.574, precision=0.638, F1=0.681
+2026-03-22 15:10:45 | INFO    |   At recall>=80%: threshold=0.450, precision=0.559, F1=0.660
+2026-03-22 15:10:45 | INFO    |   At recall>=90%: threshold=0.395, precision=0.450, F1=0.601
+2026-03-22 15:10:45 | INFO    | 
+Top 20 Features by Importance:
+2026-03-22 15:10:45 | INFO    |   MaxDiagCodes                             0.2732
+2026-03-22 15:10:45 | INFO    |   MaxClaimDuration                         0.0947
+2026-03-22 15:10:45 | INFO    |   TotalClaims                              0.0637
+2026-03-22 15:10:45 | INFO    |   MaxReimbursed                            0.0519
+2026-03-22 15:10:45 | INFO    |   MaxSameDayClaimsPerBene                  0.0483
+2026-03-22 15:10:45 | INFO    |   MaxProcCodes                             0.0428
+2026-03-22 15:10:45 | INFO    |   UniqueDiagCodes                          0.0338
+2026-03-22 15:10:45 | INFO    |   graph_diag_concentration                 0.0221
+2026-03-22 15:10:45 | INFO    |   MeanSameDayClaimsPerBene                 0.0217
+2026-03-22 15:10:45 | INFO    |   graph_proc_concentration                 0.0216
+2026-03-22 15:10:45 | INFO    |   InpatientClaims                          0.0195
+2026-03-22 15:10:45 | INFO    |   DiagDiversityRatio                       0.0147
+2026-03-22 15:10:45 | INFO    |   ClaimsPerBeneficiary                     0.0144
+2026-03-22 15:10:45 | INFO    |   UniqueBeneficiaries                      0.0120
+2026-03-22 15:10:45 | INFO    |   StdReimbursed                            0.0115
+2026-03-22 15:10:45 | INFO    |   MeanClaimDuration                        0.0105
+2026-03-22 15:10:45 | INFO    |   graph_max_shared_benes                   0.0102
+2026-03-22 15:10:45 | INFO    |   MedianReimbursed                         0.0102
+2026-03-22 15:10:45 | INFO    |   UniqueStates                             0.0089
+2026-03-22 15:10:45 | INFO    |   ChronicCond_KidneyDisease_Rate           0.0084
+2026-03-22 15:10:45 | INFO    | 
+Retraining base models on full training data for inference...
+2026-03-22 15:10:45 | INFO    | XGBoost: using CPU
+2026-03-22 15:10:48 | INFO    | Saved OOF predictions to /Users/ashish/Labcode/claude/Datasciencecap/healthcare_fraud_detection/outputs/oof_predictions.csv
+2026-03-22 15:10:48 | INFO    | 
+Total training time: 23.8s
+2026-03-22 15:10:48 | INFO    | Training summary saved to /Users/ashish/Labcode/claude/Datasciencecap/healthcare_fraud_detection/outputs/training_summary.json
+2026-03-22 15:10:56 | INFO    | Building test features...
+2026-03-22 15:10:57 | INFO    | Loaded train: 558,211 claims, 5,410 providers, 5,410 label rows
+2026-03-22 15:10:57 | INFO    | Loaded test: 135,392 claims, 1,353 providers, 1,353 label rows
+2026-03-22 15:10:57 | INFO    | Building tabular provider features...
+2026-03-22 15:11:00 | INFO    | Built 58 provider-level features for 5410 providers
+2026-03-22 15:11:01 | INFO    | Built 58 provider-level features for 1353 providers
+2026-03-22 15:11:01 | INFO    | Building graph features...
+2026-03-22 15:11:01 | INFO    | Computing graph features offline (no Neo4j)...
+2026-03-22 15:11:02 | INFO    |   Computing shared-beneficiary overlap (vectorized)...
+2026-03-22 15:11:02 | INFO    |   Computing shared-physician overlap...
+2026-03-22 15:11:03 | INFO    | Offline graph features: 12 features for 6763 providers
+2026-03-22 15:11:03 | INFO    | Final feature matrix: 70 features, 5410 train providers, 1353 test providers
+2026-03-22 15:11:04 | INFO    | Ensemble predictions: mean_prob=0.1062, threshold=0.5745, predicted_fraud=106
+2026-03-22 15:11:04 | INFO    | Saved 1353 predictions to /Users/ashish/Labcode/claude/Datasciencecap/healthcare_fraud_detection/outputs/test_predictions_ensemble.csv
+2026-03-22 15:11:04 | INFO    | Predicted fraud providers: 106/1353 (7.8%)
+2026-03-22 16:46:41 | INFO    | Building features...
+2026-03-22 16:46:42 | INFO    | Loaded train: 558,211 claims, 5,410 providers, 5,410 label rows
+2026-03-22 16:46:43 | INFO    | Loaded test: 135,392 claims, 1,353 providers, 1,353 label rows
+2026-03-22 16:46:43 | INFO    | Building tabular provider features...
+2026-03-22 16:46:46 | INFO    | Built 58 provider-level features for 5410 providers
+2026-03-22 16:46:46 | INFO    | Built 58 provider-level features for 1353 providers
+2026-03-22 16:46:46 | INFO    | Building graph features...
+2026-03-22 16:46:46 | INFO    | Computing graph features offline (no Neo4j)...
+2026-03-22 16:46:47 | INFO    |   Computing shared-beneficiary overlap (vectorized)...
+2026-03-22 16:46:48 | INFO    |   Computing shared-physician overlap...
+2026-03-22 16:46:48 | INFO    | Offline graph features: 12 features for 6763 providers
+2026-03-22 16:46:48 | INFO    | Final feature matrix: 70 features, 5410 train providers, 1353 test providers
+2026-03-22 16:46:48 | INFO    | Training data shape: (5410, 70)
+2026-03-22 16:46:48 | INFO    | Class distribution: [4904  506] (fraud rate: 9.35%)
+2026-03-22 16:46:48 | INFO    | ============================================================
+2026-03-22 16:46:48 | INFO    | TRAINING BASELINE MODEL (XGBoost)
+2026-03-22 16:46:48 | INFO    | ============================================================
+2026-03-22 16:46:48 | INFO    | Correlation pruning: dropped 15 features (threshold=0.95), keeping 55
+2026-03-22 16:46:48 | INFO    | XGBoost: using CPU
+2026-03-22 16:46:49 | INFO    |   XGBoost-Baseline Fold 1/5: ROC-AUC=0.9403, PR-AUC=0.6915, F1=0.6468
+2026-03-22 16:46:49 | INFO    | XGBoost: using CPU
+2026-03-22 16:46:49 | INFO    |   XGBoost-Baseline Fold 2/5: ROC-AUC=0.9410, PR-AUC=0.6499, F1=0.6280
+2026-03-22 16:46:49 | INFO    | XGBoost: using CPU
+2026-03-22 16:46:49 | INFO    |   XGBoost-Baseline Fold 3/5: ROC-AUC=0.9513, PR-AUC=0.7419, F1=0.6800
+2026-03-22 16:46:49 | INFO    | XGBoost: using CPU
+2026-03-22 16:46:50 | INFO    |   XGBoost-Baseline Fold 4/5: ROC-AUC=0.9494, PR-AUC=0.7261, F1=0.6731
+2026-03-22 16:46:50 | INFO    | XGBoost: using CPU
+2026-03-22 16:46:50 | INFO    |   XGBoost-Baseline Fold 5/5: ROC-AUC=0.9456, PR-AUC=0.7162, F1=0.6697
+2026-03-22 16:46:50 | INFO    |   At recall>=70%: threshold=0.407, precision=0.607, F1=0.666
+2026-03-22 16:46:50 | INFO    |   At recall>=80%: threshold=0.182, precision=0.541, F1=0.653
+2026-03-22 16:46:50 | INFO    |   At recall>=90%: threshold=0.048, precision=0.436, F1=0.587
+2026-03-22 16:46:50 | INFO    | 
+Top 20 Features by Importance:
+2026-03-22 16:46:50 | INFO    |   MaxDiagCodes                             0.2732
+2026-03-22 16:46:50 | INFO    |   MaxClaimDuration                         0.0947
+2026-03-22 16:46:50 | INFO    |   TotalClaims                              0.0637
+2026-03-22 16:46:50 | INFO    |   MaxReimbursed                            0.0519
+2026-03-22 16:46:50 | INFO    |   MaxSameDayClaimsPerBene                  0.0483
+2026-03-22 16:46:50 | INFO    |   MaxProcCodes                             0.0428
+2026-03-22 16:46:50 | INFO    |   UniqueDiagCodes                          0.0338
+2026-03-22 16:46:50 | INFO    |   graph_diag_concentration                 0.0221
+2026-03-22 16:46:50 | INFO    |   MeanSameDayClaimsPerBene                 0.0217
+2026-03-22 16:46:50 | INFO    |   graph_proc_concentration                 0.0216
+2026-03-22 16:46:50 | INFO    |   InpatientClaims                          0.0195
+2026-03-22 16:46:50 | INFO    |   DiagDiversityRatio                       0.0147
+2026-03-22 16:46:50 | INFO    |   ClaimsPerBeneficiary                     0.0144
+2026-03-22 16:46:50 | INFO    |   UniqueBeneficiaries                      0.0120
+2026-03-22 16:46:50 | INFO    |   StdReimbursed                            0.0115
+2026-03-22 16:46:50 | INFO    |   MeanClaimDuration                        0.0105
+2026-03-22 16:46:50 | INFO    |   graph_max_shared_benes                   0.0102
+2026-03-22 16:46:50 | INFO    |   MedianReimbursed                         0.0102
+2026-03-22 16:46:50 | INFO    |   UniqueStates                             0.0089
+2026-03-22 16:46:50 | INFO    |   ChronicCond_KidneyDisease_Rate           0.0084
+2026-03-22 16:46:50 | INFO    | ============================================================
+2026-03-22 16:46:50 | INFO    | TRAINING ENSEMBLE MODEL (XGBoost + LightGBM + CatBoost)
+2026-03-22 16:46:50 | INFO    | ============================================================
+2026-03-22 16:46:50 | INFO    | Correlation pruning: dropped 15 features (threshold=0.95), keeping 55
+2026-03-22 16:46:50 | INFO    | 
+--- XGBoost Base Learner ---
+2026-03-22 16:46:50 | INFO    | XGBoost: using CPU
+2026-03-22 16:46:51 | INFO    |   XGB Fold 1/5: ROC-AUC=0.9403, PR-AUC=0.6915, F1=0.6468
+2026-03-22 16:46:51 | INFO    | XGBoost: using CPU
+2026-03-22 16:46:51 | INFO    |   XGB Fold 2/5: ROC-AUC=0.9410, PR-AUC=0.6499, F1=0.6280
+2026-03-22 16:46:51 | INFO    | XGBoost: using CPU
+2026-03-22 16:46:52 | INFO    |   XGB Fold 3/5: ROC-AUC=0.9513, PR-AUC=0.7419, F1=0.6800
+2026-03-22 16:46:52 | INFO    | XGBoost: using CPU
+2026-03-22 16:46:52 | INFO    |   XGB Fold 4/5: ROC-AUC=0.9494, PR-AUC=0.7261, F1=0.6731
+2026-03-22 16:46:52 | INFO    | XGBoost: using CPU
+2026-03-22 16:46:52 | INFO    |   XGB Fold 5/5: ROC-AUC=0.9456, PR-AUC=0.7162, F1=0.6697
+2026-03-22 16:46:53 | INFO    | 
+--- LightGBM Base Learner ---
+2026-03-22 16:46:53 | INFO    |   LGB Fold 1/5: ROC-AUC=0.9422, PR-AUC=0.6184, F1=0.6190
+2026-03-22 16:46:53 | INFO    |   LGB Fold 2/5: ROC-AUC=0.9472, PR-AUC=0.7124, F1=0.6544
+2026-03-22 16:46:54 | INFO    |   LGB Fold 3/5: ROC-AUC=0.9568, PR-AUC=0.7708, F1=0.6667
+2026-03-22 16:46:54 | INFO    |   LGB Fold 4/5: ROC-AUC=0.9499, PR-AUC=0.6784, F1=0.6534
+2026-03-22 16:46:54 | INFO    |   LGB Fold 5/5: ROC-AUC=0.9420, PR-AUC=0.6562, F1=0.6777
+2026-03-22 16:46:54 | INFO    | 
+--- CatBoost Base Learner ---
+2026-03-22 16:46:54 | INFO    |   CB Fold 1/5: ROC-AUC=0.9509, PR-AUC=0.7360, F1=0.5878
+2026-03-22 16:46:55 | INFO    |   CB Fold 2/5: ROC-AUC=0.9481, PR-AUC=0.7189, F1=0.6290
+2026-03-22 16:46:55 | INFO    |   CB Fold 3/5: ROC-AUC=0.9610, PR-AUC=0.7515, F1=0.6426
+2026-03-22 16:46:55 | INFO    |   CB Fold 4/5: ROC-AUC=0.9553, PR-AUC=0.7246, F1=0.6667
+2026-03-22 16:46:56 | INFO    |   CB Fold 5/5: ROC-AUC=0.9428, PR-AUC=0.6790, F1=0.6338
+2026-03-22 16:46:56 | INFO    | 
+--- Training Meta-Learner (Logistic Regression) ---
+2026-03-22 16:46:56 | INFO    | Calibrating meta-learner probabilities...
+2026-03-22 16:46:56 | INFO    |   At recall>=70%: threshold=0.574, precision=0.638, F1=0.681
+2026-03-22 16:46:56 | INFO    |   At recall>=80%: threshold=0.450, precision=0.559, F1=0.660
+2026-03-22 16:46:56 | INFO    |   At recall>=90%: threshold=0.395, precision=0.450, F1=0.601
+2026-03-22 16:46:56 | INFO    | 
+Top 20 Features by Importance:
+2026-03-22 16:46:56 | INFO    |   MaxDiagCodes                             0.2732
+2026-03-22 16:46:56 | INFO    |   MaxClaimDuration                         0.0947
+2026-03-22 16:46:56 | INFO    |   TotalClaims                              0.0637
+2026-03-22 16:46:56 | INFO    |   MaxReimbursed                            0.0519
+2026-03-22 16:46:56 | INFO    |   MaxSameDayClaimsPerBene                  0.0483
+2026-03-22 16:46:56 | INFO    |   MaxProcCodes                             0.0428
+2026-03-22 16:46:56 | INFO    |   UniqueDiagCodes                          0.0338
+2026-03-22 16:46:56 | INFO    |   graph_diag_concentration                 0.0221
+2026-03-22 16:46:56 | INFO    |   MeanSameDayClaimsPerBene                 0.0217
+2026-03-22 16:46:56 | INFO    |   graph_proc_concentration                 0.0216
+2026-03-22 16:46:56 | INFO    |   InpatientClaims                          0.0195
+2026-03-22 16:46:56 | INFO    |   DiagDiversityRatio                       0.0147
+2026-03-22 16:46:56 | INFO    |   ClaimsPerBeneficiary                     0.0144
+2026-03-22 16:46:56 | INFO    |   UniqueBeneficiaries                      0.0120
+2026-03-22 16:46:56 | INFO    |   StdReimbursed                            0.0115
+2026-03-22 16:46:56 | INFO    |   MeanClaimDuration                        0.0105
+2026-03-22 16:46:56 | INFO    |   graph_max_shared_benes                   0.0102
+2026-03-22 16:46:56 | INFO    |   MedianReimbursed                         0.0102
+2026-03-22 16:46:56 | INFO    |   UniqueStates                             0.0089
+2026-03-22 16:46:56 | INFO    |   ChronicCond_KidneyDisease_Rate           0.0084
+2026-03-22 16:46:56 | INFO    | 
+Retraining base models on full training data for inference...
+2026-03-22 16:46:56 | INFO    | XGBoost: using CPU
+2026-03-22 16:46:59 | INFO    | Saved OOF predictions to /Users/ashish/Labcode/claude/Datasciencecap/finaldataproject/outputs/oof_predictions.csv
+2026-03-22 16:46:59 | INFO    | 
+Total training time: 17.6s
+2026-03-22 16:46:59 | INFO    | Training summary saved to /Users/ashish/Labcode/claude/Datasciencecap/finaldataproject/outputs/training_summary.json
+2026-03-22 16:47:14 | INFO    | Building test features...
+2026-03-22 16:47:16 | INFO    | Loaded train: 558,211 claims, 5,410 providers, 5,410 label rows
+2026-03-22 16:47:16 | INFO    | Loaded test: 135,392 claims, 1,353 providers, 1,353 label rows
+2026-03-22 16:47:16 | INFO    | Building tabular provider features...
+2026-03-22 16:47:19 | INFO    | Built 58 provider-level features for 5410 providers
+2026-03-22 16:47:19 | INFO    | Built 58 provider-level features for 1353 providers
+2026-03-22 16:47:19 | INFO    | Building graph features...
+2026-03-22 16:47:19 | INFO    | Computing graph features offline (no Neo4j)...
+2026-03-22 16:47:20 | INFO    |   Computing shared-beneficiary overlap (vectorized)...
+2026-03-22 16:47:21 | INFO    |   Computing shared-physician overlap...
+2026-03-22 16:47:21 | INFO    | Offline graph features: 12 features for 6763 providers
+2026-03-22 16:47:21 | INFO    | Final feature matrix: 70 features, 5410 train providers, 1353 test providers
+2026-03-22 16:47:22 | INFO    | Ensemble predictions: mean_prob=0.1062, threshold=0.5745, predicted_fraud=106
+2026-03-22 16:47:22 | INFO    | Saved 1353 predictions to /Users/ashish/Labcode/claude/Datasciencecap/finaldataproject/outputs/test_predictions_ensemble.csv
+2026-03-22 16:47:22 | INFO    | Predicted fraud providers: 106/1353 (7.8%)
+2026-03-23 09:52:41 | INFO    | Building features...
+2026-03-23 09:52:43 | INFO    | Loaded train: 558,211 claims, 5,410 providers, 5,410 label rows
+2026-03-23 09:52:43 | INFO    | Loaded test: 135,392 claims, 1,353 providers, 1,353 label rows
+2026-03-23 09:52:43 | INFO    | Building tabular provider features...
+2026-03-23 09:52:46 | INFO    | Built 58 provider-level features for 5410 providers
+2026-03-23 09:52:47 | INFO    | Built 58 provider-level features for 1353 providers
+2026-03-23 09:52:47 | INFO    | Building graph features...
+2026-03-23 09:52:47 | INFO    | Computing graph features offline (no Neo4j)...
+2026-03-23 09:52:47 | INFO    |   Computing shared-beneficiary overlap (vectorized)...
+2026-03-23 09:52:48 | INFO    |   Computing shared-physician overlap...
+2026-03-23 09:52:48 | INFO    | Offline graph features: 12 features for 6763 providers
+2026-03-23 09:52:48 | INFO    | Final feature matrix: 70 features, 5410 train providers, 1353 test providers
+2026-03-23 09:52:48 | INFO    | Training data shape: (5410, 70)
+2026-03-23 09:52:48 | INFO    | Class distribution: [4904  506] (fraud rate: 9.35%)
+2026-03-23 09:52:48 | INFO    | ============================================================
+2026-03-23 09:52:48 | INFO    | TRAINING BASELINE MODEL (XGBoost)
+2026-03-23 09:52:48 | INFO    | ============================================================
+2026-03-23 09:52:48 | INFO    | Correlation pruning: dropped 15 features (threshold=0.95), keeping 55
+2026-03-23 09:52:48 | INFO    | XGBoost: using CPU
+2026-03-23 09:52:49 | INFO    |   XGBoost-Baseline Fold 1/5: Train ROC=1.0000 / Val ROC=0.9403 (gap=+0.0597) | Train PR=1.0000 / Val PR=0.6915 (gap=+0.3085) | Val F1=0.6468
+2026-03-23 09:52:49 | INFO    | XGBoost: using CPU
+2026-03-23 09:52:49 | INFO    |   XGBoost-Baseline Fold 2/5: Train ROC=1.0000 / Val ROC=0.9410 (gap=+0.0590) | Train PR=1.0000 / Val PR=0.6499 (gap=+0.3501) | Val F1=0.6280
+2026-03-23 09:52:49 | INFO    | XGBoost: using CPU
+2026-03-23 09:52:50 | INFO    |   XGBoost-Baseline Fold 3/5: Train ROC=1.0000 / Val ROC=0.9513 (gap=+0.0487) | Train PR=1.0000 / Val PR=0.7419 (gap=+0.2581) | Val F1=0.6800
+2026-03-23 09:52:50 | INFO    | XGBoost: using CPU
+2026-03-23 09:52:50 | INFO    |   XGBoost-Baseline Fold 4/5: Train ROC=1.0000 / Val ROC=0.9494 (gap=+0.0506) | Train PR=1.0000 / Val PR=0.7261 (gap=+0.2739) | Val F1=0.6731
+2026-03-23 09:52:50 | INFO    | XGBoost: using CPU
+2026-03-23 09:52:51 | INFO    |   XGBoost-Baseline Fold 5/5: Train ROC=1.0000 / Val ROC=0.9456 (gap=+0.0544) | Train PR=1.0000 / Val PR=0.7162 (gap=+0.2838) | Val F1=0.6697
+2026-03-23 09:52:51 | INFO    |   XGBoost-Baseline Overfit Check: Avg Train ROC=1.0000 vs Avg Val ROC=0.9455 (gap=+0.0545)
+2026-03-23 09:52:51 | INFO    |   XGBoost-Baseline Overfit Check: Avg Train PR=1.0000 vs Avg Val PR=0.7051 (gap=+0.2949)
+2026-03-23 09:52:51 | WARNING |   ⚠ XGBoost-Baseline: ROC-AUC gap > 0.05 — possible overfitting!
+2026-03-23 09:52:51 | WARNING |   ⚠ XGBoost-Baseline: PR-AUC gap > 0.15 — possible overfitting!
+2026-03-23 09:52:51 | INFO    |   At recall>=70%: threshold=0.407, precision=0.607, F1=0.666
+2026-03-23 09:52:51 | INFO    |   At recall>=80%: threshold=0.182, precision=0.541, F1=0.653
+2026-03-23 09:52:51 | INFO    |   At recall>=90%: threshold=0.048, precision=0.436, F1=0.587
+2026-03-23 09:52:51 | INFO    | 
+Top 20 Features by Importance:
+2026-03-23 09:52:51 | INFO    |   MaxDiagCodes                             0.2732
+2026-03-23 09:52:51 | INFO    |   MaxClaimDuration                         0.0947
+2026-03-23 09:52:51 | INFO    |   TotalClaims                              0.0637
+2026-03-23 09:52:51 | INFO    |   MaxReimbursed                            0.0519
+2026-03-23 09:52:51 | INFO    |   MaxSameDayClaimsPerBene                  0.0483
+2026-03-23 09:52:51 | INFO    |   MaxProcCodes                             0.0428
+2026-03-23 09:52:51 | INFO    |   UniqueDiagCodes                          0.0338
+2026-03-23 09:52:51 | INFO    |   graph_diag_concentration                 0.0221
+2026-03-23 09:52:51 | INFO    |   MeanSameDayClaimsPerBene                 0.0217
+2026-03-23 09:52:51 | INFO    |   graph_proc_concentration                 0.0216
+2026-03-23 09:52:51 | INFO    |   InpatientClaims                          0.0195
+2026-03-23 09:52:51 | INFO    |   DiagDiversityRatio                       0.0147
+2026-03-23 09:52:51 | INFO    |   ClaimsPerBeneficiary                     0.0144
+2026-03-23 09:52:51 | INFO    |   UniqueBeneficiaries                      0.0120
+2026-03-23 09:52:51 | INFO    |   StdReimbursed                            0.0115
+2026-03-23 09:52:51 | INFO    |   MeanClaimDuration                        0.0105
+2026-03-23 09:52:51 | INFO    |   graph_max_shared_benes                   0.0102
+2026-03-23 09:52:51 | INFO    |   MedianReimbursed                         0.0102
+2026-03-23 09:52:51 | INFO    |   UniqueStates                             0.0089
+2026-03-23 09:52:51 | INFO    |   ChronicCond_KidneyDisease_Rate           0.0084
+2026-03-23 09:52:51 | INFO    | ============================================================
+2026-03-23 09:52:51 | INFO    | TRAINING ENSEMBLE MODEL (XGBoost + LightGBM + CatBoost)
+2026-03-23 09:52:51 | INFO    | ============================================================
+2026-03-23 09:52:51 | INFO    | Correlation pruning: dropped 15 features (threshold=0.95), keeping 55
+2026-03-23 09:52:51 | INFO    | 
+--- XGBoost Base Learner ---
+2026-03-23 09:52:51 | INFO    | XGBoost: using CPU
+2026-03-23 09:52:51 | INFO    |   XGB Fold 1/5: Train ROC=1.0000 / Val ROC=0.9403 (gap=+0.0597) | Train PR=1.0000 / Val PR=0.6915 (gap=+0.3085) | Val F1=0.6468
+2026-03-23 09:52:51 | INFO    | XGBoost: using CPU
+2026-03-23 09:52:51 | INFO    |   XGB Fold 2/5: Train ROC=1.0000 / Val ROC=0.9410 (gap=+0.0590) | Train PR=1.0000 / Val PR=0.6499 (gap=+0.3501) | Val F1=0.6280
+2026-03-23 09:52:51 | INFO    | XGBoost: using CPU
+2026-03-23 09:52:52 | INFO    |   XGB Fold 3/5: Train ROC=1.0000 / Val ROC=0.9513 (gap=+0.0487) | Train PR=1.0000 / Val PR=0.7419 (gap=+0.2581) | Val F1=0.6800
+2026-03-23 09:52:52 | INFO    | XGBoost: using CPU
+2026-03-23 09:52:52 | INFO    |   XGB Fold 4/5: Train ROC=1.0000 / Val ROC=0.9494 (gap=+0.0506) | Train PR=1.0000 / Val PR=0.7261 (gap=+0.2739) | Val F1=0.6731
+2026-03-23 09:52:52 | INFO    | XGBoost: using CPU
+2026-03-23 09:52:53 | INFO    |   XGB Fold 5/5: Train ROC=1.0000 / Val ROC=0.9456 (gap=+0.0544) | Train PR=1.0000 / Val PR=0.7162 (gap=+0.2838) | Val F1=0.6697
+2026-03-23 09:52:53 | INFO    |   XGB Overfit Check: Avg Train ROC=1.0000 vs Avg Val ROC=0.9455 (gap=+0.0545)
+2026-03-23 09:52:53 | INFO    |   XGB Overfit Check: Avg Train PR=1.0000 vs Avg Val PR=0.7051 (gap=+0.2949)
+2026-03-23 09:52:53 | WARNING |   ⚠ XGB: ROC-AUC gap > 0.05 — possible overfitting!
+2026-03-23 09:52:53 | WARNING |   ⚠ XGB: PR-AUC gap > 0.15 — possible overfitting!
+2026-03-23 09:52:53 | INFO    | 
+--- LightGBM Base Learner ---
+2026-03-23 09:52:53 | INFO    |   LGB Fold 1/5: Train ROC=0.9789 / Val ROC=0.9422 (gap=+0.0367) | Train PR=0.7525 / Val PR=0.6184 (gap=+0.1342) | Val F1=0.6190
+2026-03-23 09:52:54 | INFO    |   LGB Fold 2/5: Train ROC=1.0000 / Val ROC=0.9472 (gap=+0.0528) | Train PR=1.0000 / Val PR=0.7124 (gap=+0.2876) | Val F1=0.6544
+2026-03-23 09:52:54 | INFO    |   LGB Fold 3/5: Train ROC=1.0000 / Val ROC=0.9568 (gap=+0.0432) | Train PR=0.9999 / Val PR=0.7708 (gap=+0.2291) | Val F1=0.6667
+2026-03-23 09:52:54 | INFO    |   LGB Fold 4/5: Train ROC=0.9841 / Val ROC=0.9499 (gap=+0.0342) | Train PR=0.8274 / Val PR=0.6784 (gap=+0.1490) | Val F1=0.6534
+2026-03-23 09:52:54 | INFO    |   LGB Fold 5/5: Train ROC=0.9837 / Val ROC=0.9420 (gap=+0.0417) | Train PR=0.8244 / Val PR=0.6562 (gap=+0.1682) | Val F1=0.6777
+2026-03-23 09:52:54 | INFO    |   LGB Overfit Check: Avg Train ROC=0.9893 vs Avg Val ROC=0.9476 (gap=+0.0417)
+2026-03-23 09:52:54 | INFO    |   LGB Overfit Check: Avg Train PR=0.8809 vs Avg Val PR=0.6872 (gap=+0.1936)
+2026-03-23 09:52:54 | WARNING |   ⚠ LGB: PR-AUC gap > 0.15 — possible overfitting!
+2026-03-23 09:52:54 | INFO    | 
+--- CatBoost Base Learner ---
+2026-03-23 09:52:55 | INFO    |   CB Fold 1/5: Train ROC=0.9882 / Val ROC=0.9509 (gap=+0.0372) | Train PR=0.8887 / Val PR=0.7360 (gap=+0.1527) | Val F1=0.5878
+2026-03-23 09:52:55 | INFO    |   CB Fold 2/5: Train ROC=0.9776 / Val ROC=0.9481 (gap=+0.0296) | Train PR=0.8326 / Val PR=0.7189 (gap=+0.1137) | Val F1=0.6290
+2026-03-23 09:52:55 | INFO    |   CB Fold 3/5: Train ROC=0.9838 / Val ROC=0.9610 (gap=+0.0228) | Train PR=0.8640 / Val PR=0.7515 (gap=+0.1126) | Val F1=0.6426
+2026-03-23 09:52:56 | INFO    |   CB Fold 4/5: Train ROC=0.9987 / Val ROC=0.9553 (gap=+0.0434) | Train PR=0.9871 / Val PR=0.7246 (gap=+0.2625) | Val F1=0.6667
+2026-03-23 09:52:56 | INFO    |   CB Fold 5/5: Train ROC=0.9783 / Val ROC=0.9428 (gap=+0.0355) | Train PR=0.8272 / Val PR=0.6790 (gap=+0.1482) | Val F1=0.6338
+2026-03-23 09:52:56 | INFO    |   CB Overfit Check: Avg Train ROC=0.9853 vs Avg Val ROC=0.9516 (gap=+0.0337)
+2026-03-23 09:52:56 | INFO    |   CB Overfit Check: Avg Train PR=0.8799 vs Avg Val PR=0.7220 (gap=+0.1579)
+2026-03-23 09:52:56 | WARNING |   ⚠ CB: PR-AUC gap > 0.15 — possible overfitting!
+2026-03-23 09:52:56 | INFO    | 
+--- Training Meta-Learner (Logistic Regression) ---
+2026-03-23 09:52:56 | INFO    | Calibrating meta-learner probabilities...
+2026-03-23 09:52:56 | INFO    |   At recall>=70%: threshold=0.574, precision=0.638, F1=0.681
+2026-03-23 09:52:56 | INFO    |   At recall>=80%: threshold=0.450, precision=0.559, F1=0.660
+2026-03-23 09:52:56 | INFO    |   At recall>=90%: threshold=0.395, precision=0.450, F1=0.601
+2026-03-23 09:52:56 | INFO    | 
+Top 20 Features by Importance:
+2026-03-23 09:52:56 | INFO    |   MaxDiagCodes                             0.2732
+2026-03-23 09:52:56 | INFO    |   MaxClaimDuration                         0.0947
+2026-03-23 09:52:56 | INFO    |   TotalClaims                              0.0637
+2026-03-23 09:52:56 | INFO    |   MaxReimbursed                            0.0519
+2026-03-23 09:52:56 | INFO    |   MaxSameDayClaimsPerBene                  0.0483
+2026-03-23 09:52:56 | INFO    |   MaxProcCodes                             0.0428
+2026-03-23 09:52:56 | INFO    |   UniqueDiagCodes                          0.0338
+2026-03-23 09:52:56 | INFO    |   graph_diag_concentration                 0.0221
+2026-03-23 09:52:56 | INFO    |   MeanSameDayClaimsPerBene                 0.0217
+2026-03-23 09:52:56 | INFO    |   graph_proc_concentration                 0.0216
+2026-03-23 09:52:56 | INFO    |   InpatientClaims                          0.0195
+2026-03-23 09:52:56 | INFO    |   DiagDiversityRatio                       0.0147
+2026-03-23 09:52:56 | INFO    |   ClaimsPerBeneficiary                     0.0144
+2026-03-23 09:52:56 | INFO    |   UniqueBeneficiaries                      0.0120
+2026-03-23 09:52:56 | INFO    |   StdReimbursed                            0.0115
+2026-03-23 09:52:56 | INFO    |   MeanClaimDuration                        0.0105
+2026-03-23 09:52:56 | INFO    |   graph_max_shared_benes                   0.0102
+2026-03-23 09:52:56 | INFO    |   MedianReimbursed                         0.0102
+2026-03-23 09:52:56 | INFO    |   UniqueStates                             0.0089
+2026-03-23 09:52:56 | INFO    |   ChronicCond_KidneyDisease_Rate           0.0084
+2026-03-23 09:52:56 | INFO    | 
+Retraining base models on full training data for inference...
+2026-03-23 09:52:56 | INFO    | XGBoost: using CPU
+2026-03-23 09:52:59 | INFO    | Saved OOF predictions to /Users/ashish/Labcode/claude/Datasciencecap/finaldataproject/outputs/oof_predictions.csv
+2026-03-23 09:52:59 | INFO    | 
+Total training time: 17.2s
+2026-03-23 09:52:59 | INFO    | Training summary saved to /Users/ashish/Labcode/claude/Datasciencecap/finaldataproject/outputs/training_summary.json
+2026-03-23 10:01:14 | INFO    | Building features...
+2026-03-23 10:01:15 | INFO    | Loaded train: 558,211 claims, 5,410 providers, 5,410 label rows
+2026-03-23 10:01:15 | INFO    | Loaded test: 135,392 claims, 1,353 providers, 1,353 label rows
+2026-03-23 10:01:15 | INFO    | Building tabular provider features...
+2026-03-23 10:01:18 | INFO    | Built 58 provider-level features for 5410 providers
+2026-03-23 10:01:19 | INFO    | Built 58 provider-level features for 1353 providers
+2026-03-23 10:01:19 | INFO    | Building graph features...
+2026-03-23 10:01:19 | INFO    | Computing graph features offline (no Neo4j)...
+2026-03-23 10:01:19 | INFO    |   Computing shared-beneficiary overlap (vectorized)...
+2026-03-23 10:01:20 | INFO    |   Computing shared-physician overlap...
+2026-03-23 10:01:20 | INFO    | Offline graph features: 12 features for 6763 providers
+2026-03-23 10:01:21 | INFO    | Final feature matrix: 70 features, 5410 train providers, 1353 test providers
+2026-03-23 10:01:21 | INFO    | Training data: (5410, 70)
+2026-03-23 10:01:21 | INFO    | Class distribution: [4904  506] (fraud rate: 9.35%)
+2026-03-23 10:01:21 | INFO    | ============================================================
+2026-03-23 10:01:21 | INFO    | IMPROVED TRAINING PIPELINE
+2026-03-23 10:01:21 | INFO    | ============================================================
+2026-03-23 10:01:21 | INFO    | 
+--- Adversarial Validation (Train vs Test Distribution Check) ---
+2026-03-23 10:01:21 | INFO    |   ✓ Adversarial AUC = 0.4875 — Train/Test distributions are similar
+2026-03-23 10:01:21 | INFO    | Correlation pruning (threshold=0.9): dropped 20, keeping 50
+2026-03-23 10:01:21 | INFO    | 
+--- Initial fit for feature selection ---
+2026-03-23 10:01:21 | INFO    | Importance pruning: dropped 1 features with importance < 0.005
+2026-03-23 10:01:21 | INFO    | Features after selection: 49
+2026-03-23 10:01:21 | INFO    | 
+--- Training with 3x5-fold CV (15 total evaluations) ---
+2026-03-23 10:01:21 | INFO    | 
+=== XGBoost (Improved) ===
+2026-03-23 10:01:21 | INFO    |   XGB-Improved Fold 1/15: Train ROC=0.9946/Val ROC=0.9436 (gap=+0.0510) | Train PR=0.9405/Val PR=0.6863 (gap=+0.2542)
+2026-03-23 10:01:22 | INFO    |   XGB-Improved Fold 2/15: Train ROC=0.9953/Val ROC=0.9477 (gap=+0.0476) | Train PR=0.9514/Val PR=0.6707 (gap=+0.2807)
+2026-03-23 10:01:22 | INFO    |   XGB-Improved Fold 3/15: Train ROC=0.9945/Val ROC=0.9542 (gap=+0.0403) | Train PR=0.9391/Val PR=0.7264 (gap=+0.2128)
+2026-03-23 10:01:22 | INFO    |   XGB-Improved Fold 4/15: Train ROC=0.9944/Val ROC=0.9482 (gap=+0.0462) | Train PR=0.9358/Val PR=0.6958 (gap=+0.2400)
+2026-03-23 10:01:22 | INFO    |   XGB-Improved Fold 5/15: Train ROC=0.9944/Val ROC=0.9405 (gap=+0.0539) | Train PR=0.9376/Val PR=0.6892 (gap=+0.2484)
+2026-03-23 10:01:22 | INFO    |   XGB-Improved Fold 6/15: Train ROC=0.9954/Val ROC=0.9363 (gap=+0.0590) | Train PR=0.9511/Val PR=0.6766 (gap=+0.2745)
+2026-03-23 10:01:23 | INFO    |   XGB-Improved Fold 7/15: Train ROC=0.9946/Val ROC=0.9378 (gap=+0.0568) | Train PR=0.9385/Val PR=0.7080 (gap=+0.2305)
+2026-03-23 10:01:23 | INFO    |   XGB-Improved Fold 8/15: Train ROC=0.9939/Val ROC=0.9469 (gap=+0.0470) | Train PR=0.9317/Val PR=0.7180 (gap=+0.2136)
+2026-03-23 10:01:23 | INFO    |   XGB-Improved Fold 9/15: Train ROC=0.9953/Val ROC=0.9430 (gap=+0.0522) | Train PR=0.9478/Val PR=0.6672 (gap=+0.2806)
+2026-03-23 10:01:23 | INFO    |   XGB-Improved Fold 10/15: Train ROC=0.9940/Val ROC=0.9648 (gap=+0.0292) | Train PR=0.9336/Val PR=0.7796 (gap=+0.1540)
+2026-03-23 10:01:24 | INFO    |   XGB-Improved Fold 11/15: Train ROC=0.9944/Val ROC=0.9668 (gap=+0.0276) | Train PR=0.9368/Val PR=0.7555 (gap=+0.1813)
+2026-03-23 10:01:24 | INFO    |   XGB-Improved Fold 12/15: Train ROC=0.9949/Val ROC=0.9314 (gap=+0.0635) | Train PR=0.9431/Val PR=0.6747 (gap=+0.2684)
+2026-03-23 10:01:24 | INFO    |   XGB-Improved Fold 13/15: Train ROC=0.9947/Val ROC=0.9426 (gap=+0.0521) | Train PR=0.9409/Val PR=0.7025 (gap=+0.2383)
+2026-03-23 10:01:24 | INFO    |   XGB-Improved Fold 14/15: Train ROC=0.9945/Val ROC=0.9568 (gap=+0.0377) | Train PR=0.9398/Val PR=0.7509 (gap=+0.1889)
+2026-03-23 10:01:25 | INFO    |   XGB-Improved Fold 15/15: Train ROC=0.9950/Val ROC=0.9409 (gap=+0.0541) | Train PR=0.9474/Val PR=0.6459 (gap=+0.3014)
+2026-03-23 10:01:25 | INFO    |   XGB-Improved OVERFIT CHECK:
+2026-03-23 10:01:25 | INFO    |     ROC-AUC: Train=0.9947 → Val=0.9468 (gap=+0.0479)
+2026-03-23 10:01:25 | INFO    |     PR-AUC:  Train=0.9410 → Val=0.7032 (gap=+0.2378)
+2026-03-23 10:01:25 | INFO    |   ✓ XGB-Improved: ROC gap healthy
+2026-03-23 10:01:25 | WARNING |   ⚠ XGB-Improved: PR gap > 0.15 — OVERFITTING
+2026-03-23 10:01:25 | INFO    |   XGB-Improved Stability: Val ROC std=0.0097, Val PR std=0.0359
+2026-03-23 10:01:25 | INFO    | 
+=== LightGBM (Improved) ===
+2026-03-23 10:01:25 | INFO    |   LGB-Improved Fold 1/15: Train ROC=0.9627/Val ROC=0.9424 (gap=+0.0203) | Train PR=0.6764/Val PR=0.6098 (gap=+0.0666)
+2026-03-23 10:01:25 | INFO    |   LGB-Improved Fold 2/15: Train ROC=0.9669/Val ROC=0.9473 (gap=+0.0196) | Train PR=0.7185/Val PR=0.6926 (gap=+0.0259)
+2026-03-23 10:01:25 | INFO    |   LGB-Improved Fold 3/15: Train ROC=0.9646/Val ROC=0.9543 (gap=+0.0103) | Train PR=0.7037/Val PR=0.7014 (gap=+0.0023)
+2026-03-23 10:01:25 | INFO    |   LGB-Improved Fold 4/15: Train ROC=0.9644/Val ROC=0.9465 (gap=+0.0180) | Train PR=0.7089/Val PR=0.6165 (gap=+0.0925)
+2026-03-23 10:01:25 | INFO    |   LGB-Improved Fold 5/15: Train ROC=0.9651/Val ROC=0.9384 (gap=+0.0267) | Train PR=0.7083/Val PR=0.6298 (gap=+0.0785)
+2026-03-23 10:01:25 | INFO    |   LGB-Improved Fold 6/15: Train ROC=0.9681/Val ROC=0.9336 (gap=+0.0345) | Train PR=0.7207/Val PR=0.6488 (gap=+0.0719)
+2026-03-23 10:01:26 | INFO    |   LGB-Improved Fold 7/15: Train ROC=0.9661/Val ROC=0.9428 (gap=+0.0234) | Train PR=0.7120/Val PR=0.6136 (gap=+0.0984)
+2026-03-23 10:01:26 | INFO    |   LGB-Improved Fold 8/15: Train ROC=0.9625/Val ROC=0.9437 (gap=+0.0188) | Train PR=0.7003/Val PR=0.6200 (gap=+0.0803)
+2026-03-23 10:01:26 | INFO    |   LGB-Improved Fold 9/15: Train ROC=0.9636/Val ROC=0.9442 (gap=+0.0194) | Train PR=0.6983/Val PR=0.6465 (gap=+0.0518)
+2026-03-23 10:01:26 | INFO    |   LGB-Improved Fold 10/15: Train ROC=0.9640/Val ROC=0.9647 (gap=-0.0007) | Train PR=0.6957/Val PR=0.7222 (gap=-0.0265)
+2026-03-23 10:01:26 | INFO    |   LGB-Improved Fold 11/15: Train ROC=0.9653/Val ROC=0.9684 (gap=-0.0032) | Train PR=0.7159/Val PR=0.7538 (gap=-0.0380)
+2026-03-23 10:01:26 | INFO    |   LGB-Improved Fold 12/15: Train ROC=0.9666/Val ROC=0.9270 (gap=+0.0396) | Train PR=0.7041/Val PR=0.5973 (gap=+0.1068)
+2026-03-23 10:01:26 | INFO    |   LGB-Improved Fold 13/15: Train ROC=0.9638/Val ROC=0.9349 (gap=+0.0288) | Train PR=0.7072/Val PR=0.6175 (gap=+0.0897)
+2026-03-23 10:01:26 | INFO    |   LGB-Improved Fold 14/15: Train ROC=0.9645/Val ROC=0.9579 (gap=+0.0065) | Train PR=0.6952/Val PR=0.7034 (gap=-0.0083)
+2026-03-23 10:01:26 | INFO    |   LGB-Improved Fold 15/15: Train ROC=0.9652/Val ROC=0.9339 (gap=+0.0314) | Train PR=0.7102/Val PR=0.5993 (gap=+0.1110)
+2026-03-23 10:01:26 | INFO    |   LGB-Improved OVERFIT CHECK:
+2026-03-23 10:01:26 | INFO    |     ROC-AUC: Train=0.9649 → Val=0.9453 (gap=+0.0196)
+2026-03-23 10:01:26 | INFO    |     PR-AUC:  Train=0.7050 → Val=0.6515 (gap=+0.0535)
+2026-03-23 10:01:26 | INFO    |   ✓ LGB-Improved: ROC gap healthy
+2026-03-23 10:01:26 | INFO    |   ✓ LGB-Improved: PR gap healthy
+2026-03-23 10:01:26 | INFO    |   LGB-Improved Stability: Val ROC std=0.0114, Val PR std=0.0484
+2026-03-23 10:01:26 | INFO    | 
+=== CatBoost (Improved) ===
+2026-03-23 10:01:26 | INFO    |   CB-Improved Fold 1/15: Train ROC=0.9610/Val ROC=0.9500 (gap=+0.0110) | Train PR=0.7409/Val PR=0.7393 (gap=+0.0016)
+2026-03-23 10:01:26 | INFO    |   CB-Improved Fold 2/15: Train ROC=0.9610/Val ROC=0.9462 (gap=+0.0148) | Train PR=0.7486/Val PR=0.6997 (gap=+0.0489)
+2026-03-23 10:01:27 | INFO    |   CB-Improved Fold 3/15: Train ROC=0.9697/Val ROC=0.9582 (gap=+0.0114) | Train PR=0.7819/Val PR=0.7530 (gap=+0.0289)
+2026-03-23 10:01:27 | INFO    |   CB-Improved Fold 4/15: Train ROC=0.9900/Val ROC=0.9576 (gap=+0.0324) | Train PR=0.9026/Val PR=0.7404 (gap=+0.1622)
+2026-03-23 10:01:28 | INFO    |   CB-Improved Fold 5/15: Train ROC=0.9698/Val ROC=0.9458 (gap=+0.0240) | Train PR=0.7798/Val PR=0.7081 (gap=+0.0718)
+2026-03-23 10:01:28 | INFO    |   CB-Improved Fold 6/15: Train ROC=0.9671/Val ROC=0.9344 (gap=+0.0327) | Train PR=0.7696/Val PR=0.6818 (gap=+0.0879)
+2026-03-23 10:01:28 | INFO    |   CB-Improved Fold 7/15: Train ROC=0.9663/Val ROC=0.9465 (gap=+0.0198) | Train PR=0.7702/Val PR=0.7076 (gap=+0.0626)
+2026-03-23 10:01:29 | INFO    |   CB-Improved Fold 8/15: Train ROC=0.9738/Val ROC=0.9515 (gap=+0.0223) | Train PR=0.8023/Val PR=0.6953 (gap=+0.1069)
+2026-03-23 10:01:29 | INFO    |   CB-Improved Fold 9/15: Train ROC=0.9651/Val ROC=0.9494 (gap=+0.0157) | Train PR=0.7642/Val PR=0.7355 (gap=+0.0287)
+2026-03-23 10:01:29 | INFO    |   CB-Improved Fold 10/15: Train ROC=0.9578/Val ROC=0.9647 (gap=-0.0069) | Train PR=0.7347/Val PR=0.7682 (gap=-0.0335)
+2026-03-23 10:01:29 | INFO    |   CB-Improved Fold 11/15: Train ROC=0.9792/Val ROC=0.9702 (gap=+0.0090) | Train PR=0.8266/Val PR=0.7810 (gap=+0.0456)
+2026-03-23 10:01:30 | INFO    |   CB-Improved Fold 12/15: Train ROC=0.9604/Val ROC=0.9339 (gap=+0.0265) | Train PR=0.7345/Val PR=0.6759 (gap=+0.0586)
+2026-03-23 10:01:30 | INFO    |   CB-Improved Fold 13/15: Train ROC=0.9717/Val ROC=0.9469 (gap=+0.0248) | Train PR=0.7894/Val PR=0.7288 (gap=+0.0605)
+2026-03-23 10:01:30 | INFO    |   CB-Improved Fold 14/15: Train ROC=0.9587/Val ROC=0.9621 (gap=-0.0034) | Train PR=0.7391/Val PR=0.7646 (gap=-0.0255)
+2026-03-23 10:01:30 | INFO    |   CB-Improved Fold 15/15: Train ROC=0.9699/Val ROC=0.9377 (gap=+0.0323) | Train PR=0.7927/Val PR=0.6398 (gap=+0.1529)
+2026-03-23 10:01:30 | INFO    |   CB-Improved OVERFIT CHECK:
+2026-03-23 10:01:30 | INFO    |     ROC-AUC: Train=0.9681 → Val=0.9503 (gap=+0.0178)
+2026-03-23 10:01:30 | INFO    |     PR-AUC:  Train=0.7785 → Val=0.7213 (gap=+0.0572)
+2026-03-23 10:01:30 | INFO    |   ✓ CB-Improved: ROC gap healthy
+2026-03-23 10:01:30 | INFO    |   ✓ CB-Improved: PR gap healthy
+2026-03-23 10:01:30 | INFO    |   CB-Improved Stability: Val ROC std=0.0103, Val PR std=0.0377
+2026-03-23 10:01:30 | INFO    | 
+--- Meta-Learner + Calibration ---
+2026-03-23 10:01:30 | INFO    |   At recall>=70%: threshold=0.528, precision=0.608, F1=0.677
+2026-03-23 10:01:31 | INFO    |   At recall>=80%: threshold=0.494, precision=0.579, F1=0.673
+2026-03-23 10:01:31 | INFO    |   At recall>=90%: threshold=0.449, precision=0.466, F1=0.614
+2026-03-23 10:01:31 | INFO    | 
+--- Calibration Assessment ---
+2026-03-23 10:01:31 | INFO    |   XGBoost Calibration: Brier=0.0590, ECE=0.0628
+2026-03-23 10:01:31 | INFO    |   Ensemble Calibration: Brier=0.0624, ECE=0.1493
+2026-03-23 10:01:31 | INFO    | 
+Top 20 Features:
+2026-03-23 10:01:31 | INFO    |   MaxDiagCodes                             0.1901
+2026-03-23 10:01:31 | INFO    |   InpatientClaims                          0.1022
+2026-03-23 10:01:31 | INFO    |   MaxProcCodes                             0.0890
+2026-03-23 10:01:31 | INFO    |   MaxSameDayClaimsPerBene                  0.0638
+2026-03-23 10:01:31 | INFO    |   MaxClaimDuration                         0.0607
+2026-03-23 10:01:31 | INFO    |   MaxReimbursed                            0.0424
+2026-03-23 10:01:31 | INFO    |   MeanSameDayClaimsPerBene                 0.0423
+2026-03-23 10:01:31 | INFO    |   TotalClaims                              0.0306
+2026-03-23 10:01:31 | INFO    |   MeanClaimDuration                        0.0299
+2026-03-23 10:01:31 | INFO    |   graph_diag_concentration                 0.0246
+2026-03-23 10:01:31 | INFO    |   graph_proc_concentration                 0.0230
+2026-03-23 10:01:31 | INFO    |   ClaimsPerBeneficiary                     0.0162
+2026-03-23 10:01:31 | INFO    |   FracDead                                 0.0123
+2026-03-23 10:01:31 | INFO    |   MeanProcCodes                            0.0119
+2026-03-23 10:01:31 | INFO    |   ClaimDateSpanDays                        0.0110
+2026-03-23 10:01:31 | INFO    |   StdReimbursed                            0.0103
+2026-03-23 10:01:31 | INFO    |   MaxChronicCount                          0.0102
+2026-03-23 10:01:31 | INFO    |   UniqueStates                             0.0095
+2026-03-23 10:01:31 | INFO    |   UniqueCounties                           0.0093
+2026-03-23 10:01:31 | INFO    |   graph_total_shared_benes                 0.0092
+2026-03-23 10:01:31 | INFO    | 
+--- Retraining on full data for inference ---
+2026-03-23 10:01:32 | INFO    | 
+Total improved training time: 18.5s
+2026-03-23 10:01:32 | INFO    | Summary saved to /Users/ashish/Labcode/claude/Datasciencecap/finaldataproject/outputs/training_summary_improved.json
+2026-03-23 10:37:42 | INFO    | Building features...
+2026-03-23 10:37:43 | INFO    | Loaded train: 558,211 claims, 5,410 providers, 5,410 label rows
+2026-03-23 10:37:44 | INFO    | Loaded test: 135,392 claims, 1,353 providers, 1,353 label rows
+2026-03-23 10:37:44 | INFO    | Building tabular provider features...
+2026-03-23 10:37:46 | INFO    | Built 58 provider-level features for 5410 providers
+2026-03-23 10:37:47 | INFO    | Built 58 provider-level features for 1353 providers
+2026-03-23 10:37:47 | INFO    | Building graph features...
+2026-03-23 10:37:47 | WARNING | Neo4j unavailable (Couldn't connect to localhost:7687 (resolved to ('[::1]:7687', '127.0.0.1:7687')):
+Failed to establish connection to ResolvedIPv6Address(('::1', 7687, 0, 0)) (reason [Errno 61] Connection refused)
+Failed to establish connection to ResolvedIPv4Address(('127.0.0.1', 7687)) (reason [Errno 61] Connection refused)), falling back to offline graph features
+2026-03-23 10:37:47 | INFO    | Computing graph features offline (no Neo4j)...
+2026-03-23 10:37:48 | INFO    |   Computing shared-beneficiary overlap (vectorized)...
+2026-03-23 10:37:48 | INFO    |   Computing shared-physician overlap...
+2026-03-23 10:37:49 | INFO    | Offline graph features: 12 features for 6763 providers
+2026-03-23 10:37:49 | INFO    | Final feature matrix: 70 features, 5410 train providers, 1353 test providers
+2026-03-23 10:37:49 | INFO    | Training data: (5410, 70)
+2026-03-23 10:37:49 | INFO    | Class distribution: [4904  506] (fraud rate: 9.35%)
+2026-03-23 10:37:49 | INFO    | ============================================================
+2026-03-23 10:37:49 | INFO    | IMPROVED TRAINING PIPELINE
+2026-03-23 10:37:49 | INFO    | ============================================================
+2026-03-23 10:37:49 | INFO    | 
+--- Adversarial Validation (Train vs Test Distribution Check) ---
+2026-03-23 10:37:49 | INFO    |   ✓ Adversarial AUC = 0.4875 — Train/Test distributions are similar
+2026-03-23 10:37:49 | INFO    | Correlation pruning (threshold=0.9): dropped 20, keeping 50
+2026-03-23 10:37:49 | INFO    | 
+--- Initial fit for feature selection ---
+2026-03-23 10:37:49 | INFO    | Importance pruning: dropped 1 features with importance < 0.005
+2026-03-23 10:37:49 | INFO    | Features after selection: 49
+2026-03-23 10:37:49 | INFO    | 
+--- Training with 3x5-fold CV (15 total evaluations) ---
+2026-03-23 10:37:49 | INFO    | 
+=== XGBoost (Improved) ===
+2026-03-23 10:37:50 | INFO    |   XGB-Improved Fold 1/15: Train ROC=0.9946/Val ROC=0.9436 (gap=+0.0510) | Train PR=0.9405/Val PR=0.6863 (gap=+0.2542)
+2026-03-23 10:37:50 | INFO    |   XGB-Improved Fold 2/15: Train ROC=0.9953/Val ROC=0.9477 (gap=+0.0476) | Train PR=0.9514/Val PR=0.6707 (gap=+0.2807)
+2026-03-23 10:37:50 | INFO    |   XGB-Improved Fold 3/15: Train ROC=0.9945/Val ROC=0.9542 (gap=+0.0403) | Train PR=0.9391/Val PR=0.7264 (gap=+0.2128)
+2026-03-23 10:37:50 | INFO    |   XGB-Improved Fold 4/15: Train ROC=0.9944/Val ROC=0.9482 (gap=+0.0462) | Train PR=0.9358/Val PR=0.6958 (gap=+0.2400)
+2026-03-23 10:37:51 | INFO    |   XGB-Improved Fold 5/15: Train ROC=0.9944/Val ROC=0.9405 (gap=+0.0539) | Train PR=0.9376/Val PR=0.6892 (gap=+0.2484)
+2026-03-23 10:37:51 | INFO    |   XGB-Improved Fold 6/15: Train ROC=0.9954/Val ROC=0.9363 (gap=+0.0590) | Train PR=0.9511/Val PR=0.6766 (gap=+0.2745)
+2026-03-23 10:37:51 | INFO    |   XGB-Improved Fold 7/15: Train ROC=0.9946/Val ROC=0.9378 (gap=+0.0568) | Train PR=0.9385/Val PR=0.7080 (gap=+0.2305)
+2026-03-23 10:37:51 | INFO    |   XGB-Improved Fold 8/15: Train ROC=0.9939/Val ROC=0.9469 (gap=+0.0470) | Train PR=0.9317/Val PR=0.7180 (gap=+0.2136)
+2026-03-23 10:37:52 | INFO    |   XGB-Improved Fold 9/15: Train ROC=0.9953/Val ROC=0.9430 (gap=+0.0522) | Train PR=0.9478/Val PR=0.6672 (gap=+0.2806)
+2026-03-23 10:37:52 | INFO    |   XGB-Improved Fold 10/15: Train ROC=0.9940/Val ROC=0.9648 (gap=+0.0292) | Train PR=0.9336/Val PR=0.7796 (gap=+0.1540)
+2026-03-23 10:37:52 | INFO    |   XGB-Improved Fold 11/15: Train ROC=0.9944/Val ROC=0.9668 (gap=+0.0276) | Train PR=0.9368/Val PR=0.7555 (gap=+0.1813)
+2026-03-23 10:37:52 | INFO    |   XGB-Improved Fold 12/15: Train ROC=0.9949/Val ROC=0.9314 (gap=+0.0635) | Train PR=0.9431/Val PR=0.6747 (gap=+0.2684)
+2026-03-23 10:37:53 | INFO    |   XGB-Improved Fold 13/15: Train ROC=0.9947/Val ROC=0.9426 (gap=+0.0521) | Train PR=0.9409/Val PR=0.7025 (gap=+0.2383)
+2026-03-23 10:37:53 | INFO    |   XGB-Improved Fold 14/15: Train ROC=0.9945/Val ROC=0.9568 (gap=+0.0377) | Train PR=0.9398/Val PR=0.7509 (gap=+0.1889)
+2026-03-23 10:37:53 | INFO    |   XGB-Improved Fold 15/15: Train ROC=0.9950/Val ROC=0.9409 (gap=+0.0541) | Train PR=0.9474/Val PR=0.6459 (gap=+0.3014)
+2026-03-23 10:37:53 | INFO    |   XGB-Improved OVERFIT CHECK:
+2026-03-23 10:37:53 | INFO    |     ROC-AUC: Train=0.9947 → Val=0.9468 (gap=+0.0479)
+2026-03-23 10:37:53 | INFO    |     PR-AUC:  Train=0.9410 → Val=0.7032 (gap=+0.2378)
+2026-03-23 10:37:53 | INFO    |   ✓ XGB-Improved: ROC gap healthy
+2026-03-23 10:37:53 | WARNING |   ⚠ XGB-Improved: PR gap > 0.15 — OVERFITTING
+2026-03-23 10:37:53 | INFO    |   XGB-Improved Stability: Val ROC std=0.0097, Val PR std=0.0359
+2026-03-23 10:37:54 | INFO    | 
+=== LightGBM (Improved) ===
+2026-03-23 10:37:54 | INFO    |   LGB-Improved Fold 1/15: Train ROC=0.9627/Val ROC=0.9424 (gap=+0.0203) | Train PR=0.6764/Val PR=0.6098 (gap=+0.0666)
+2026-03-23 10:37:54 | INFO    |   LGB-Improved Fold 2/15: Train ROC=0.9669/Val ROC=0.9473 (gap=+0.0196) | Train PR=0.7185/Val PR=0.6926 (gap=+0.0259)
+2026-03-23 10:37:54 | INFO    |   LGB-Improved Fold 3/15: Train ROC=0.9646/Val ROC=0.9543 (gap=+0.0103) | Train PR=0.7037/Val PR=0.7014 (gap=+0.0023)
+2026-03-23 10:37:54 | INFO    |   LGB-Improved Fold 4/15: Train ROC=0.9644/Val ROC=0.9465 (gap=+0.0180) | Train PR=0.7089/Val PR=0.6165 (gap=+0.0925)
+2026-03-23 10:37:54 | INFO    |   LGB-Improved Fold 5/15: Train ROC=0.9651/Val ROC=0.9384 (gap=+0.0267) | Train PR=0.7083/Val PR=0.6298 (gap=+0.0785)
+2026-03-23 10:37:54 | INFO    |   LGB-Improved Fold 6/15: Train ROC=0.9681/Val ROC=0.9336 (gap=+0.0345) | Train PR=0.7207/Val PR=0.6488 (gap=+0.0719)
+2026-03-23 10:37:54 | INFO    |   LGB-Improved Fold 7/15: Train ROC=0.9661/Val ROC=0.9428 (gap=+0.0234) | Train PR=0.7120/Val PR=0.6136 (gap=+0.0984)
+2026-03-23 10:37:54 | INFO    |   LGB-Improved Fold 8/15: Train ROC=0.9625/Val ROC=0.9437 (gap=+0.0188) | Train PR=0.7003/Val PR=0.6200 (gap=+0.0803)
+2026-03-23 10:37:54 | INFO    |   LGB-Improved Fold 9/15: Train ROC=0.9636/Val ROC=0.9442 (gap=+0.0194) | Train PR=0.6983/Val PR=0.6465 (gap=+0.0518)
+2026-03-23 10:37:54 | INFO    |   LGB-Improved Fold 10/15: Train ROC=0.9640/Val ROC=0.9647 (gap=-0.0007) | Train PR=0.6957/Val PR=0.7222 (gap=-0.0265)
+2026-03-23 10:37:54 | INFO    |   LGB-Improved Fold 11/15: Train ROC=0.9653/Val ROC=0.9684 (gap=-0.0032) | Train PR=0.7159/Val PR=0.7538 (gap=-0.0380)
+2026-03-23 10:37:54 | INFO    |   LGB-Improved Fold 12/15: Train ROC=0.9666/Val ROC=0.9270 (gap=+0.0396) | Train PR=0.7041/Val PR=0.5973 (gap=+0.1068)
+2026-03-23 10:37:54 | INFO    |   LGB-Improved Fold 13/15: Train ROC=0.9638/Val ROC=0.9349 (gap=+0.0288) | Train PR=0.7072/Val PR=0.6175 (gap=+0.0897)
+2026-03-23 10:37:55 | INFO    |   LGB-Improved Fold 14/15: Train ROC=0.9645/Val ROC=0.9579 (gap=+0.0065) | Train PR=0.6952/Val PR=0.7034 (gap=-0.0083)
+2026-03-23 10:37:55 | INFO    |   LGB-Improved Fold 15/15: Train ROC=0.9652/Val ROC=0.9339 (gap=+0.0314) | Train PR=0.7102/Val PR=0.5993 (gap=+0.1110)
+2026-03-23 10:37:55 | INFO    |   LGB-Improved OVERFIT CHECK:
+2026-03-23 10:37:55 | INFO    |     ROC-AUC: Train=0.9649 → Val=0.9453 (gap=+0.0196)
+2026-03-23 10:37:55 | INFO    |     PR-AUC:  Train=0.7050 → Val=0.6515 (gap=+0.0535)
+2026-03-23 10:37:55 | INFO    |   ✓ LGB-Improved: ROC gap healthy
+2026-03-23 10:37:55 | INFO    |   ✓ LGB-Improved: PR gap healthy
+2026-03-23 10:37:55 | INFO    |   LGB-Improved Stability: Val ROC std=0.0114, Val PR std=0.0484
+2026-03-23 10:37:55 | INFO    | 
+=== CatBoost (Improved) ===
+2026-03-23 10:37:55 | INFO    |   CB-Improved Fold 1/15: Train ROC=0.9610/Val ROC=0.9500 (gap=+0.0110) | Train PR=0.7409/Val PR=0.7393 (gap=+0.0016)
+2026-03-23 10:37:55 | INFO    |   CB-Improved Fold 2/15: Train ROC=0.9610/Val ROC=0.9462 (gap=+0.0148) | Train PR=0.7486/Val PR=0.6997 (gap=+0.0489)
+2026-03-23 10:37:56 | INFO    |   CB-Improved Fold 3/15: Train ROC=0.9697/Val ROC=0.9582 (gap=+0.0114) | Train PR=0.7819/Val PR=0.7530 (gap=+0.0289)
+2026-03-23 10:37:56 | INFO    |   CB-Improved Fold 4/15: Train ROC=0.9900/Val ROC=0.9576 (gap=+0.0324) | Train PR=0.9026/Val PR=0.7404 (gap=+0.1622)
+2026-03-23 10:37:57 | INFO    |   CB-Improved Fold 5/15: Train ROC=0.9698/Val ROC=0.9458 (gap=+0.0240) | Train PR=0.7798/Val PR=0.7081 (gap=+0.0718)
+2026-03-23 10:37:57 | INFO    |   CB-Improved Fold 6/15: Train ROC=0.9671/Val ROC=0.9344 (gap=+0.0327) | Train PR=0.7696/Val PR=0.6818 (gap=+0.0879)
+2026-03-23 10:37:57 | INFO    |   CB-Improved Fold 7/15: Train ROC=0.9663/Val ROC=0.9465 (gap=+0.0198) | Train PR=0.7702/Val PR=0.7076 (gap=+0.0626)
+2026-03-23 10:37:58 | INFO    |   CB-Improved Fold 8/15: Train ROC=0.9738/Val ROC=0.9515 (gap=+0.0223) | Train PR=0.8023/Val PR=0.6953 (gap=+0.1069)
+2026-03-23 10:37:58 | INFO    |   CB-Improved Fold 9/15: Train ROC=0.9651/Val ROC=0.9494 (gap=+0.0157) | Train PR=0.7642/Val PR=0.7355 (gap=+0.0287)
+2026-03-23 10:37:58 | INFO    |   CB-Improved Fold 10/15: Train ROC=0.9578/Val ROC=0.9647 (gap=-0.0069) | Train PR=0.7347/Val PR=0.7682 (gap=-0.0335)
+2026-03-23 10:37:58 | INFO    |   CB-Improved Fold 11/15: Train ROC=0.9792/Val ROC=0.9702 (gap=+0.0090) | Train PR=0.8266/Val PR=0.7810 (gap=+0.0456)
+2026-03-23 10:37:59 | INFO    |   CB-Improved Fold 12/15: Train ROC=0.9604/Val ROC=0.9339 (gap=+0.0265) | Train PR=0.7345/Val PR=0.6759 (gap=+0.0586)
+2026-03-23 10:37:59 | INFO    |   CB-Improved Fold 13/15: Train ROC=0.9717/Val ROC=0.9469 (gap=+0.0248) | Train PR=0.7894/Val PR=0.7288 (gap=+0.0605)
+2026-03-23 10:37:59 | INFO    |   CB-Improved Fold 14/15: Train ROC=0.9587/Val ROC=0.9621 (gap=-0.0034) | Train PR=0.7391/Val PR=0.7646 (gap=-0.0255)
+2026-03-23 10:37:59 | INFO    |   CB-Improved Fold 15/15: Train ROC=0.9699/Val ROC=0.9377 (gap=+0.0323) | Train PR=0.7927/Val PR=0.6398 (gap=+0.1529)
+2026-03-23 10:37:59 | INFO    |   CB-Improved OVERFIT CHECK:
+2026-03-23 10:37:59 | INFO    |     ROC-AUC: Train=0.9681 → Val=0.9503 (gap=+0.0178)
+2026-03-23 10:37:59 | INFO    |     PR-AUC:  Train=0.7785 → Val=0.7213 (gap=+0.0572)
+2026-03-23 10:37:59 | INFO    |   ✓ CB-Improved: ROC gap healthy
+2026-03-23 10:37:59 | INFO    |   ✓ CB-Improved: PR gap healthy
+2026-03-23 10:37:59 | INFO    |   CB-Improved Stability: Val ROC std=0.0103, Val PR std=0.0377
+2026-03-23 10:37:59 | INFO    | 
+--- Meta-Learner + Calibration ---
+2026-03-23 10:37:59 | INFO    |   At recall>=70%: threshold=0.528, precision=0.608, F1=0.677
+2026-03-23 10:37:59 | INFO    |   At recall>=80%: threshold=0.494, precision=0.579, F1=0.673
+2026-03-23 10:37:59 | INFO    |   At recall>=90%: threshold=0.449, precision=0.466, F1=0.614
+2026-03-23 10:37:59 | INFO    | 
+--- Calibration Assessment ---
+2026-03-23 10:37:59 | INFO    |   XGBoost Calibration: Brier=0.0590, ECE=0.0628
+2026-03-23 10:37:59 | INFO    |   Ensemble Calibration: Brier=0.0624, ECE=0.1493
+2026-03-23 10:37:59 | INFO    | 
+Top 20 Features:
+2026-03-23 10:37:59 | INFO    |   MaxDiagCodes                             0.1901
+2026-03-23 10:37:59 | INFO    |   InpatientClaims                          0.1022
+2026-03-23 10:37:59 | INFO    |   MaxProcCodes                             0.0890
+2026-03-23 10:37:59 | INFO    |   MaxSameDayClaimsPerBene                  0.0638
+2026-03-23 10:37:59 | INFO    |   MaxClaimDuration                         0.0607
+2026-03-23 10:37:59 | INFO    |   MaxReimbursed                            0.0424
+2026-03-23 10:37:59 | INFO    |   MeanSameDayClaimsPerBene                 0.0423
+2026-03-23 10:37:59 | INFO    |   TotalClaims                              0.0306
+2026-03-23 10:37:59 | INFO    |   MeanClaimDuration                        0.0299
+2026-03-23 10:37:59 | INFO    |   graph_diag_concentration                 0.0246
+2026-03-23 10:37:59 | INFO    |   graph_proc_concentration                 0.0230
+2026-03-23 10:37:59 | INFO    |   ClaimsPerBeneficiary                     0.0162
+2026-03-23 10:37:59 | INFO    |   FracDead                                 0.0123
+2026-03-23 10:37:59 | INFO    |   MeanProcCodes                            0.0119
+2026-03-23 10:37:59 | INFO    |   ClaimDateSpanDays                        0.0110
+2026-03-23 10:37:59 | INFO    |   StdReimbursed                            0.0103
+2026-03-23 10:37:59 | INFO    |   MaxChronicCount                          0.0102
+2026-03-23 10:37:59 | INFO    |   UniqueStates                             0.0095
+2026-03-23 10:37:59 | INFO    |   UniqueCounties                           0.0093
+2026-03-23 10:37:59 | INFO    |   graph_total_shared_benes                 0.0092
+2026-03-23 10:37:59 | INFO    | 
+--- Retraining on full data for inference ---
+2026-03-23 10:38:01 | INFO    | 
+Total improved training time: 19.1s
+2026-03-23 10:38:01 | INFO    | Summary saved to /Users/ashish/Labcode/claude/Datasciencecap/finaldataproject/outputs/training_summary_improved.json
+2026-03-23 10:48:02 | INFO    | Loaded train: 558,211 claims, 5,410 providers, 5,410 label rows
+2026-03-23 10:48:03 | INFO    | Loaded test: 135,392 claims, 1,353 providers, 1,353 label rows
+2026-03-23 10:48:03 | INFO    | Connected to Neo4j at bolt://localhost:7687
+2026-03-23 10:48:03 | INFO    | Neo4j schema constraints created
+2026-03-23 10:48:03 | INFO    | Neo4j graph cleared
+2026-03-23 10:48:03 | INFO    | Ingesting 693,603 claim rows into Neo4j...
+2026-03-23 10:48:04 | INFO    |   Created 6,763 Provider nodes
+2026-03-23 10:48:05 | INFO    |   Created 148,072 Beneficiary nodes
+2026-03-23 10:48:06 | INFO    |   Created 123,158 Physician nodes
+2026-03-23 10:48:06 | INFO    |   Created 11,227 DiagnosisCode nodes
+2026-03-23 10:48:06 | INFO    |   Created 1,400 ProcedureCode nodes
+2026-03-23 10:48:13 | INFO    |   Created 450,542 TREATED relationships
+2026-03-23 10:48:14 | INFO    |   Created 109,886 EMPLOYED relationships
+2026-03-23 10:48:15 | INFO    |   Created 45,768 EMPLOYED relationships
+2026-03-23 10:48:15 | INFO    |   Created 60,964 EMPLOYED relationships
+2026-03-23 10:48:25 | INFO    |   Created 548,875 USED_DIAGNOSIS relationships
+2026-03-23 10:48:33 | INFO    |   Created 285,684 USED_DIAGNOSIS relationships
+2026-03-23 10:48:40 | INFO    |   Created 210,020 USED_DIAGNOSIS relationships
+2026-03-23 10:48:45 | INFO    |   Created 154,402 USED_DIAGNOSIS relationships
+2026-03-23 10:48:50 | INFO    |   Created 112,111 USED_DIAGNOSIS relationships
+2026-03-23 10:48:53 | INFO    |   Created 87,753 USED_DIAGNOSIS relationships
+2026-03-23 10:48:56 | INFO    |   Created 70,584 USED_DIAGNOSIS relationships
+2026-03-23 10:48:59 | INFO    |   Created 58,133 USED_DIAGNOSIS relationships
+2026-03-23 10:49:01 | INFO    |   Created 46,195 USED_DIAGNOSIS relationships
+2026-03-23 10:49:01 | INFO    |   Created 6,029 USED_DIAGNOSIS relationships
+2026-03-23 10:49:02 | INFO    |   Created 23,683 USED_PROCEDURE relationships
+2026-03-23 10:49:02 | INFO    |   Created 4,940 USED_PROCEDURE relationships
+2026-03-23 10:49:02 | INFO    |   Created 1,111 USED_PROCEDURE relationships
+2026-03-23 10:49:02 | INFO    |   Created 147 USED_PROCEDURE relationships
+2026-03-23 10:49:02 | INFO    |   Created 11 USED_PROCEDURE relationships
+2026-03-23 10:49:02 | INFO    |   Created 0 USED_PROCEDURE relationships
+2026-03-23 10:49:02 | INFO    | Neo4j ingestion complete
+2026-03-23 10:57:16 | INFO    | Building test features...
+2026-03-23 10:57:17 | INFO    | Loaded train: 558,211 claims, 5,410 providers, 5,410 label rows
+2026-03-23 10:57:18 | INFO    | Loaded test: 135,392 claims, 1,353 providers, 1,353 label rows
+2026-03-23 10:57:18 | INFO    | Building tabular provider features...
+2026-03-23 10:57:20 | INFO    | Built 58 provider-level features for 5410 providers
+2026-03-23 10:57:21 | INFO    | Built 58 provider-level features for 1353 providers
+2026-03-23 10:57:21 | INFO    | Building graph features...
+2026-03-23 10:57:21 | INFO    | Computing graph features offline (no Neo4j)...
+2026-03-23 10:57:22 | INFO    |   Computing shared-beneficiary overlap (vectorized)...
+2026-03-23 10:57:22 | INFO    |   Computing shared-physician overlap...
+2026-03-23 10:57:23 | INFO    | Offline graph features: 12 features for 6763 providers
+2026-03-23 10:57:23 | INFO    | Final feature matrix: 70 features, 5410 train providers, 1353 test providers
+2026-03-23 10:57:24 | INFO    | Ensemble predictions: mean_prob=0.1062, threshold=0.5745, predicted_fraud=106
+2026-03-23 10:57:24 | INFO    | Saved 1353 predictions to /Users/ashish/Labcode/claude/Datasciencecap/finaldataproject/outputs/test_predictions_ensemble.csv
+2026-03-23 10:57:24 | INFO    | Predicted fraud providers: 106/1353 (7.8%)
+2026-03-23 10:57:39 | INFO    | Loaded train: 558,211 claims, 5,410 providers, 5,410 label rows
+2026-03-23 10:57:39 | INFO    | Loaded test: 135,392 claims, 1,353 providers, 1,353 label rows
+2026-03-23 10:57:39 | INFO    | Connected to Neo4j at bolt://localhost:7687
+2026-03-23 10:57:39 | INFO    | Neo4j schema constraints created
+2026-03-23 10:57:51 | INFO    | Neo4j graph cleared
+2026-03-23 10:57:51 | INFO    | Ingesting 693,603 claim rows into Neo4j...
+2026-03-23 10:57:51 | INFO    |   Created 6,763 Provider nodes
+2026-03-23 10:57:52 | INFO    |   Created 148,072 Beneficiary nodes
+2026-03-23 10:57:53 | INFO    |   Created 123,158 Physician nodes
+2026-03-23 10:57:53 | INFO    |   Created 11,227 DiagnosisCode nodes
+2026-03-23 10:57:53 | INFO    |   Created 1,400 ProcedureCode nodes
+2026-03-23 10:57:59 | INFO    |   Created 450,542 TREATED relationships
+2026-03-23 10:58:00 | INFO    |   Created 109,886 EMPLOYED relationships
+2026-03-23 10:58:01 | INFO    |   Created 45,768 EMPLOYED relationships
+2026-03-23 10:58:01 | INFO    |   Created 60,964 EMPLOYED relationships
+2026-03-23 10:58:11 | INFO    |   Created 548,875 USED_DIAGNOSIS relationships
+2026-03-23 10:58:19 | INFO    |   Created 285,684 USED_DIAGNOSIS relationships
+2026-03-23 10:58:26 | INFO    |   Created 210,020 USED_DIAGNOSIS relationships
+2026-03-23 10:58:32 | INFO    |   Created 154,402 USED_DIAGNOSIS relationships
+2026-03-23 10:58:37 | INFO    |   Created 112,111 USED_DIAGNOSIS relationships
+2026-03-23 10:58:40 | INFO    |   Created 87,753 USED_DIAGNOSIS relationships
+2026-03-23 10:58:43 | INFO    |   Created 70,584 USED_DIAGNOSIS relationships
+2026-03-23 10:58:46 | INFO    |   Created 58,133 USED_DIAGNOSIS relationships
+2026-03-23 10:58:48 | INFO    |   Created 46,195 USED_DIAGNOSIS relationships
+2026-03-23 10:58:48 | INFO    |   Created 6,029 USED_DIAGNOSIS relationships
+2026-03-23 10:58:49 | INFO    |   Created 23,683 USED_PROCEDURE relationships
+2026-03-23 10:58:49 | INFO    |   Created 4,940 USED_PROCEDURE relationships
+2026-03-23 10:58:49 | INFO    |   Created 1,111 USED_PROCEDURE relationships
+2026-03-23 10:58:49 | INFO    |   Created 147 USED_PROCEDURE relationships
+2026-03-23 10:58:49 | INFO    |   Created 11 USED_PROCEDURE relationships
+2026-03-23 10:58:49 | INFO    |   Created 0 USED_PROCEDURE relationships
+2026-03-23 10:58:49 | INFO    | Neo4j ingestion complete

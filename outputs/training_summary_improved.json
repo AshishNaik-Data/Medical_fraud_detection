@@ -1,0 +1,16 @@
+{
+  "improved_oof_metrics": {
+    "roc_auc": 0.9526961131995176,
+    "pr_auc": 0.7041800765315425,
+    "f1": 0.6771653543307087,
+    "precision": 0.6075353218210361,
+    "recall": 0.7648221343873518,
+    "accuracy": 0.9317929759704251,
+    "threshold": 0.5275807722616233
+  },
+  "n_features": 49,
+  "n_train_providers": 5410,
+  "fraud_rate": 0.09353049907578559,
+  "gpu_used": false,
+  "training_time_seconds": 19.1
+}

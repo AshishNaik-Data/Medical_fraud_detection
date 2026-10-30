@@ -1,5 +1,0 @@
--r requirements.txt
-lightgbm>=4.0
-neo4j>=5.0
-py2neo>=2021.2
-shap>=0.45
